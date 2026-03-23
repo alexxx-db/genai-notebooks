@@ -9,9 +9,17 @@ resources:
   jobs:
     pii_profiling_job:
       name: "[vLLM] PII detection profiling (multi-model)"
+      job_clusters:
+        - job_cluster_key: a100_single_node
+          new_cluster:
+            spark_version: "16.4.x-ml-scala2.12"
+            node_type_id: "Standard_NC24ads_A100_v4"
+            num_workers: 0
+            spark_conf:
+              spark.master: "local[*]"
       tasks:
         - task_key: qwen3_4b
-          existing_cluster_id: 0309-232400-mqol8s67
+          job_cluster_key: a100_single_node
           notebook_task:
             notebook_path: ../vllm/pii_detection_profiling.ipynb
             base_parameters:
@@ -25,7 +33,7 @@ resources:
         - task_key: qwen3_8b
           depends_on:
             - task_key: qwen3_4b
-          existing_cluster_id: 0309-232400-mqol8s67
+          job_cluster_key: a100_single_node
           notebook_task:
             notebook_path: ../vllm/pii_detection_profiling.ipynb
             base_parameters:
@@ -39,7 +47,7 @@ resources:
         - task_key: qwen3_14b
           depends_on:
             - task_key: qwen3_8b
-          existing_cluster_id: 0309-232400-mqol8s67
+          job_cluster_key: a100_single_node
           notebook_task:
             notebook_path: ../vllm/pii_detection_profiling.ipynb
             base_parameters:
@@ -49,4 +57,3 @@ resources:
               output_catalog: "shm"
               output_schema: "default"
           timeout_seconds: 3600
-
