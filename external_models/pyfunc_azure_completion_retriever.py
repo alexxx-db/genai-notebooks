@@ -1,18 +1,18 @@
 import os
 import mlflow
-from typing import List
+from typing import Any
 from mlflow.pyfunc import PythonModel
 from openai import AzureOpenAI
 
 from mlflow.models import ModelConfig
 config = ModelConfig(development_config='config.yaml')
 
-llm_api_key = os.getenv('API_SECRET_KEY')
-search_api_key = os.getenv('SEARCH_SECRET_KEY')
+llm_api_key: str | None = os.getenv('API_SECRET_KEY')
+search_api_key: str | None = os.getenv('SEARCH_SECRET_KEY')
 
 class AzureCompletionRetriever(PythonModel):
-    
-    def predict(self, context, model_input: list[str]) -> list[str]:    
+
+    def predict(self, context: Any, model_input: list[str]) -> list[str]:    
         """
         Generate a response for a given question using predefined responses or Azure OpenAI.
 
@@ -92,8 +92,7 @@ class AzureCompletionRetriever(PythonModel):
         except Exception as e:
             return([f"An error occurred while generating response: {e}"])
     
-    def load_context(self, context):
-        from openai import AzureOpenAI
+    def load_context(self, context: Any) -> None:
         pass
   
 completion_model = AzureCompletionRetriever()
