@@ -32,7 +32,6 @@ Index of notebooks by topic. Most run on [Databricks Serverless](https://docs.da
 | Notebook |
 |----------|
 | [custom_models/Gemma3.ipynb](custom_models/Gemma3.ipynb) |
-| [custom_models/Qwen Example.ipynb](custom_models/Qwen%20Example.ipynb) |
 | [custom_models/tinyllama_transformers.ipynb](custom_models/tinyllama_transformers.ipynb) |
 
 ### DSPy
@@ -73,6 +72,7 @@ in the same MLflow Traces UI as SDK-emitted ones.
 ### MCP (Model Context Protocol)
 | Notebook |
 |----------|
+| [mcp/openai-mcp-tool-calling-agent.ipynb](mcp/openai-mcp-tool-calling-agent.ipynb) |
 | [mcp/test_connection.ipynb](mcp/test_connection.ipynb) |
 
 ### Document Intelligence
@@ -104,7 +104,7 @@ Anthropic SDK).
 ### vLLM
 | Notebook |
 |----------|
-| [vllm/qwen35_4b_throughput.ipynb](vllm/qwen35_4b_throughput.ipynb) |
+| [vllm/pii_detection_profiling.ipynb](vllm/pii_detection_profiling.ipynb) |
 
-vLLM + Qwen 3.5 4B throughput profiling (~500 rows). Deploy and run via Asset Bundle on single-node A100 (`NC24ads_A100_v4`), ML Runtime 16.4 LTS: `databricks bundle deploy -t dev` then `databricks bundle run -t dev vllm_qwen_throughput_job`.
+PII detection profiling with vLLM — multi-model sweep (Qwen 3 4B/8B/14B, ~500 rows each). Deploy and run via Asset Bundle on single-node A100 (`NC24ads_A100_v4`), ML Runtime 16.4 LTS: `databricks bundle deploy -t dev` then `databricks bundle run -t dev pii_profiling_job`.
 
