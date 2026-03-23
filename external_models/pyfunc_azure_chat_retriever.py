@@ -1,6 +1,6 @@
 import os
 import mlflow
-from typing import List, Optional
+from typing import Any, Optional
 from mlflow.pyfunc import ChatModel
 from mlflow.types.llm import ChatMessage, ChatParams, ChatCompletionResponse
 from openai import AzureOpenAI
@@ -8,15 +8,15 @@ from openai import AzureOpenAI
 from mlflow.models import ModelConfig
 config = ModelConfig(development_config='config.yaml')
 
-llm_api_key = os.getenv('API_SECRET_KEY')
-search_api_key = os.getenv('SEARCH_SECRET_KEY')
+llm_api_key: str | None = os.getenv('API_SECRET_KEY')
+search_api_key: str | None = os.getenv('SEARCH_SECRET_KEY')
 
 class AzureChatRetriever(ChatModel):
-    
+
     def predict(
-        self, 
-        context, 
-        messages: List[ChatMessage], 
+        self,
+        context: Any,
+        messages: list[ChatMessage],
         params: Optional[ChatParams] = None
     ) -> ChatCompletionResponse:    
         
