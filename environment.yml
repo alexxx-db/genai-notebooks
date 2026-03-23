@@ -1,0 +1,53 @@
+# Conda environment for genai-notebooks
+# Aligned with Databricks Serverless environment v4 (Python 3.12)
+#
+# Create:  conda env create -f environment.yml
+# Update:  conda env update -f environment.yml --prune
+# Activate: conda activate genai-notebooks
+
+name: genai-notebooks
+
+channels:
+  - defaults
+  - conda-forge
+
+dependencies:
+  - python=3.12
+  # Core
+  - pandas>=2.2.0
+  - pyarrow>=19.0.0
+  - requests>=2.32.0
+  - pyyaml>=6.0.0
+  - ipykernel>=6.29.0
+
+  # Everything else via pip (many Databricks/AI packages are pip-only)
+  - pip
+  - pip:
+      # Databricks
+      - databricks-connect>=17.0.0,<18
+      - databricks-sdk>=0.49.0
+      - databricks-langchain>=0.2.0
+      - databricks-vectorsearch>=0.44.0
+      - databricks-mcp>=0.4.0
+
+      # LLM and AI
+      - mlflow>=2.22.0
+      - openai
+      - langgraph>=0.5.0
+      - dspy-ai>=2.5.0
+      - mcp>=1.13.1
+      - nest-asyncio>=1.6.0
+
+      # Azure
+      - azure-search-documents>=11.4.0
+      - azure-identity>=1.20.0
+
+      # API server
+      - fastapi>=0.115.0
+      - uvicorn[standard]>=0.34.0
+
+      # Dev tools (optional — install with: pip install -e ".[dev]")
+      # - black>=24.0.0
+      # - isort>=5.12.0
+      # - flake8>=6.0.0
+      # - mypy>=1.0.0
