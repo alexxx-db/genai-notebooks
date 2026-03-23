@@ -179,40 +179,6 @@ def predict_document_image(image_path, model, processor):
 
 # COMMAND ----------
 
-
-
-# COMMAND ----------
-
-#Download model from huggingface
-
-# COMMAND ----------
-
-from ultralytics import YOLO
-from huggingface_hub import hf_hub_download
-
-# Download the model from Hugging Face
-model_path = hf_hub_download(repo_id="hantian/yolo-doclaynet", filename="yolov11m-doclaynet.pt")
-
-# Load the downloaded model using Ultralytics YOLO
-model = YOLO(model_path)
-
-# Perform object detection on an image
-results = model(image)
-
-# Display the results
-results[0].show()
-
-# COMMAND ----------
-
-import matplotlib.pyplot as plt
-
-# Assuming 'results' contains your detection results
-img = results[0].plot()  # This returns a numpy array
-plt.figure(figsize=(12, 8))
-plt.imshow(img)
-plt.axis('off')
-plt.show()
-
-# COMMAND ----------
+# For YOLO-based document layout detection, see yolo.py
 
 
