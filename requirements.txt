@@ -1,3 +1,5 @@
+# Minimal pinned deps for Databricks App deployment (FastAPI + LLM client).
+# For full notebook environment use: uv sync  (or uv sync --extra serverless-env4)
 fastapi==0.116.1
 uvicorn[standard]==0.35.0
 mlflow==3.2.0
