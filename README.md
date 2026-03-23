@@ -32,6 +32,7 @@ Index of notebooks by topic. Most run on [Databricks Serverless](https://docs.da
 | Notebook |
 |----------|
 | [custom_models/Gemma3.ipynb](custom_models/Gemma3.ipynb) |
+| [custom_models/Qwen Example.ipynb](custom_models/Qwen%20Example.ipynb) |
 | [custom_models/tinyllama_transformers.ipynb](custom_models/tinyllama_transformers.ipynb) |
 
 ### DSPy
